@@ -1,0 +1,3 @@
+CREATE USER 'user'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON compassbook.* TO 'user'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
