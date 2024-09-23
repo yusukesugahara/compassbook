@@ -1,0 +1,24 @@
+ja:
+  devise:
+    sessions:
+      user:
+        sign_in: "ログイン"
+        signed_in: "ログインしました。"
+        sign_out: "ログアウト"
+    registrations:
+      user:
+        sign_up: "新規登録"
+        signed_up: "アカウントが作成されました。"
+        updated: "アカウント情報が更新されました。"
+    shared:
+      links:
+        sign_up: "新規登録はこちら"
+        sign_in: "ログインはこちら"
+        sign_out: "ログアウト"
+        forgot_password: "パスワードをお忘れですか？"
+        edit_account: "アカウント情報を編集"
+    passwords:
+      new:
+        send_instructions: "パスワード再設定の案内を送信する"
+      edit:
+        change_my_password: "パスワードを変更する"
