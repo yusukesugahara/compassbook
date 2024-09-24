@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_24_014852) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_24_042301) do
+  create_table "pest_analyses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.text "political_factors"
+    t.text "economic_factors"
+    t.text "social_factors"
+    t.text "technological_factors"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_pest_analyses_on_project_id"
+  end
+
   create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
@@ -33,5 +45,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_014852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pest_analyses", "projects"
   add_foreign_key "projects", "users"
 end

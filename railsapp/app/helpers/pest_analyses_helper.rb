@@ -1,0 +1,2 @@
+module PestAnalysesHelper
+end
