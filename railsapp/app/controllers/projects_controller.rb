@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-
+    @pest_analyses = @project.pest_analyses
   end
 
   def edit

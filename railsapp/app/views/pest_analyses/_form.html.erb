@@ -1,0 +1,29 @@
+<%= form_with(model: [@project, @pest_analysis], local: true) do |form| %>
+	<div class="mb-3">
+		<%= form.label :political_factors, '政治的要因' %>
+		<%= form.text_area :political_factors, class: 'form-control', rows: 3 %>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :economic_factors, '経済的要因' %>
+		<%= form.text_area :economic_factors, class: 'form-control', rows: 3 %>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :social_factors, '社会的要因' %>
+		<%= form.text_area :social_factors, class: 'form-control', rows: 3 %>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :technological_factors, '技術的要因' %>
+		<%= form.text_area :technological_factors, class: 'form-control', rows: 3 %>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :memo, 'メモ' %>
+		<%= form.text_area :memo, class: 'form-control', rows: 5 %>
+	</div>
+
+	<%= form.submit '保存', class: 'btn btn-primary' %>
+	<%= link_to '一覧に戻る', project_path(@project), class: " btn btn-light" %>
+<% end %>

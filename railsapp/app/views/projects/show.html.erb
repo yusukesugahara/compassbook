@@ -16,4 +16,15 @@
     <%= link_to '削除', project_path(@project), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
 		<%= link_to '戻る', root_path, class: "btn btn-secondary" %>
   </div>
+	<div class="m-3">
+	  <%= link_to 'PEST分析', new_project_pest_analysis_path(@project), class: 'btn btn-primary' %>
+  </div>
+
+	<div class="m-3">
+		<% if @pest_analyses.any? %>
+			<% @pest_analyses.each do |pest_analysis| %>
+					<%= link_to 'pest', project_pest_analysis_path(@project, pest_analysis), class: 'btn btn-primary' %>
+			<% end %>
+    <% end %>
+  </div>
 </div>

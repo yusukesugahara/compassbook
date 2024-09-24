@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="m-3">
+    <h1>PEST分析詳細</h1>
+    <% if @pest_analysis.present? %>
+			<div class="mb-3">
+				<label class="form-label">政治的要因</label>
+				<p class="form-control" style="min-height:36px;"><%= @pest_analysis.political_factors %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">経済的要因</label>
+				<p class="form-control" style="min-height:36px;"><%= @pest_analysis.economic_factors %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">社会的要因</label>
+				<p class="form-control" style="min-height:36px;"><%= @pest_analysis.social_factors %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">技術的要因</label>
+				<p class="form-control" style="min-height:36px;"><%= @pest_analysis.technological_factors %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">メモ</label>
+				<p class="form-control" style="min-height:36px;"><%= @pest_analysis.memo %></p>
+			</div>
+
+			<div class="actions">
+				<%= link_to '編集', edit_project_pest_analysis_path(@project, @pest_analysis), class: 'btn btn-secondary' %>
+				<%= link_to '削除', project_pest_analysis_path(@project, @pest_analysis), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+				<%= link_to '一覧に戻る', project_path(@project), class: 'btn btn-primary' %>
+			</div>
+			<% else %>
+				<p>PEST分析が見つかりません。</p>
+			<% end %>
+	</div>
+</div>
