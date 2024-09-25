@@ -36,17 +36,24 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     rm -rf /tmp/node-build-master
 
 # Install application gems
-COPY railsapp/Gemfile railsapp/Gemfile.lock ./ 
+COPY Gemfile Gemfile.lock ./ 
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules (including font-awesome and other JS dependencies)
-COPY railsapp/package.json railsapp/yarn.lock ./ 
+COPY package.json yarn.lock ./ 
 RUN yarn install --frozen-lockfile
 
+# build.sh をコピーし、実行権限を付与する
+COPY build.sh /rails/build.sh
+RUN chmod +x /rails/build.sh
+
+# サブモジュールの初期化と更新、ビルドの実行
+RUN /rails/build.sh
+
 # Copy application code to container
-COPY railsapp /rails
+COPY . .
 
 # Precompile bootsnap and assets
 RUN bundle exec bootsnap precompile app/ lib/
@@ -76,8 +83,8 @@ RUN groupadd --system --gid 1000 rails && \
 USER 1000:1000
 
 # Set entrypoint and expose necessary port
-ENTRYPOINT ["./bin/rails"]
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 EXPOSE 3000
 
 # Default command to run the Rails server
-CMD ["server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["./bin/rails", "server"]
