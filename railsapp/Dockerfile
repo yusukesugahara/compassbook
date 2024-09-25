@@ -36,13 +36,13 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     rm -rf /tmp/node-build-master
 
 # Copy gem and package files and install dependencies
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock ./ 
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock ./ 
 RUN yarn install --frozen-lockfile
 
 # Copy application code to container
@@ -51,7 +51,10 @@ COPY . .
 # Precompile bootsnap and assets
 RUN bundle exec bootsnap precompile app/ lib/
 RUN chmod +x ./bin/rails
-RUN RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE ./bin/rails assets:precompile
+
+# Precompile assets with SECRET_KEY_BASE
+ARG SECRET_KEY_BASE
+RUN RAILS_ENV=production SECRET_KEY_BASE=${SECRET_KEY_BASE} ./bin/rails assets:precompile
 
 # Optionally remove node_modules after asset precompilation if not needed at runtime
 RUN rm -rf node_modules
