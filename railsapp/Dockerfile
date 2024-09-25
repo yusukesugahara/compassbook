@@ -53,6 +53,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN chmod +x ./bin/rails
 
 # Precompile assets with SECRET_KEY_BASE
+ARG DATABASE_URL
 ARG SECRET_KEY_BASE
 RUN DATABASE_URL=$DATABASE_URL RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE ./bin/rails assets:precompile
 
