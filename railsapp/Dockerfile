@@ -36,13 +36,13 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     rm -rf /tmp/node-build-master
 
 # Install application gems
-COPY railsapp/Gemfile railsapp/Gemfile.lock ./ 
+COPY railsapp/Gemfile railsapp/Gemfile.lock /rails/ 
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules (including font-awesome and other JS dependencies)
-COPY railsapp/package.json railsapp/yarn.lock ./ 
+COPY railsapp/package.json railsapp/yarn.lock /rails/ 
 RUN yarn install --frozen-lockfile
 
 # Copy application code to container
