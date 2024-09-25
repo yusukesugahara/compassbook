@@ -82,18 +82,28 @@ RUN DATABASE_URL=$DATABASE_URL RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_
 # 不要な Node.js モジュールを削除（任意）
 RUN rm -rf node_modules
 
-# Dockerfile の最終ステージ
+# 最終ステージの開始
 FROM base
 
+# ビルド済みのアーティファクトをコピー
 COPY --from=build "$BUNDLE_PATH" "$BUNDLE_PATH"
 COPY --from=build /rails /rails
 
+# ファイルの所有権とパーミッションを設定
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails /rails
 
 USER rails
 
+# 作業ディレクトリの設定
 WORKDIR /rails
 
+# 環境変数の設定
+ENV RAILS_ENV=production
+
+# ポートの公開
 EXPOSE 3000
+
+# CMD の設定
+CMD ["bash", "-c", "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p 3000"]
