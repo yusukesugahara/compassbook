@@ -9,7 +9,7 @@ WORKDIR /rails
 
 # Install necessary packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libpq-dev libjemalloc2 libvips && \
+    apt-get install --no-install-recommends -y curl libpq-dev libjemalloc2 libvips git && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set environment variables for production
@@ -36,14 +36,21 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     rm -rf /tmp/node-build-master
 
 # Install application gems
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock ./ 
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules (including font-awesome and other JS dependencies)
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock ./ 
 RUN yarn install --frozen-lockfile
+
+# build.sh をコピーし、実行権限を付与する
+COPY build.sh /rails/build.sh
+RUN chmod +x /rails/build.sh
+
+# サブモジュールの初期化と更新、ビルドの実行
+RUN /rails/build.sh
 
 # Copy application code to container
 COPY . .
@@ -53,9 +60,9 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN chmod +x ./bin/rails
 
 # Precompile assets with SECRET_KEY_BASE
-ARG DATABASE_URL
-ARG SECRET_KEY_BASE
-RUN DATABASE_URL=$DATABASE_URL RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE ./bin/rails assets:precompile
+ENV DATABASE_URL=$DATABASE_URL
+ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
+RUN RAILS_ENV=production ./bin/rails assets:precompile
 
 # Optionally remove node_modules after asset precompilation if not needed at runtime
 RUN rm -rf node_modules
