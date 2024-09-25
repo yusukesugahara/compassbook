@@ -50,7 +50,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: railsapp_production
-  username: railsapp
-  password: <%= ENV["RAILSAPP_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
