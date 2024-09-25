@@ -4,7 +4,6 @@ services:
     env: ruby
     buildCommand: |
       echo "Starting build process..."
-      cd railsapp || { echo "Railsapp directory not found"; exit 1; }
       bundle install || { echo "Bundle install failed"; exit 1; }
       yarn install || { echo "Yarn install failed"; exit 1; }
       rails assets:precompile || { echo "Assets precompile failed"; exit 1; }
