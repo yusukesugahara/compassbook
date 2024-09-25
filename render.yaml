@@ -11,6 +11,5 @@ services:
       echo "Build completed."
     startCommand: "rails server -b 0.0.0.0 -p $PORT"
     preDeployCommand: |
-      echo "Running database setup..."
-      rails db:create || { echo "Database creation failed"; exit 1; }
+      echo "Running database migrations..."
       rails db:migrate || { echo "Database migration failed"; exit 1; }
