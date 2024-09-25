@@ -1,36 +1,32 @@
 # syntax = docker/dockerfile:1
 
-# This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
-# docker build -t my-app .
-# docker run -d -p 80:80 -p 443:443 --name my-app -e RAILS_MASTER_KEY=<value from config/master.key> my-app
-
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
+# Use a specific Ruby version from a slim image for production
 ARG RUBY_VERSION=3.2.0
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
-# Rails app lives here
+# Set working directory inside the container
 WORKDIR /rails
 
-# Install base packages
+# Install necessary packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libpq-dev libjemalloc2 libvips && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Set production environment
+# Set environment variables for production
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
-# Throw-away build stage to reduce size of final image
+# Build stage to install gems and node modules
 FROM base AS build
 
-# Install packages needed to build gems and node modules
+# Install build dependencies
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential libpq-dev git node-gyp pkg-config python-is-python3 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install JavaScript dependencies
+# Install Node.js and Yarn
 ARG NODE_VERSION=20.17.0
 ARG YARN_VERSION=1.22.22
 ENV PATH=/usr/local/node/bin:$PATH
@@ -39,7 +35,7 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     npm install -g yarn@$YARN_VERSION && \
     rm -rf /tmp/node-build-master
 
-# Install application gems
+# Copy gem and package files and install dependencies
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
@@ -49,35 +45,33 @@ RUN bundle install && \
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-# Copy application code
+# Copy application code to container
 COPY . .
 
-# Precompile bootsnap code for faster boot times
+# Precompile bootsnap and assets
 RUN bundle exec bootsnap precompile app/ lib/
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN chmod +x ./bin/rails
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-
+# Optionally remove node_modules after asset precompilation if not needed at runtime
 RUN rm -rf node_modules
 
-
-# Final stage for app image
+# Final stage for production image
 FROM base
 
-# Copy built artifacts: gems, application
+# Copy built artifacts from build stage
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
-# Run and own only the runtime files as a non-root user for security
+# Set proper file permissions and ownership
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
 
-# Entrypoint prepares the database.
+# Set entrypoint and expose necessary port
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
+
+# Default command to run the Rails server
 CMD ["./bin/rails", "server"]
