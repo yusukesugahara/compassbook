@@ -1,6 +1,11 @@
 services:
   - type: web
-    name: compassbook 
+    name: compassbook
     env: ruby
-    buildCommand: "bundle install && yarn install && rails assets:precompile"
+    buildCommand: |
+      echo "Starting build process..."
+      bundle install || { echo "Bundle install failed"; exit 1; }
+      yarn install || { echo "Yarn install failed"; exit 1; }
+      rails assets:precompile || { echo "Assets precompile failed"; exit 1; }
+      echo "Build completed."
     startCommand: "rails server -b 0.0.0.0 -p $PORT"
