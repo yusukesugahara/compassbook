@@ -62,7 +62,7 @@ RUN chmod +x ./bin/rails
 # Precompile assets with SECRET_KEY_BASE
 ENV DATABASE_URL=$DATABASE_URL
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
-RUN RAILS_ENV=production ./bin/rails assets:precompile
+RUN DATABASE_URL=$DATABASE_URL RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE ./bin/rails assets:precompile
 
 # Optionally remove node_modules after asset precompilation if not needed at runtime
 RUN rm -rf node_modules
