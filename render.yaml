@@ -10,7 +10,8 @@ services:
       rails assets:precompile || { echo "Assets precompile failed"; exit 1; }
       echo "Build completed."
     startCommand: |
+      export RAILS_ENV=production
       echo "Running database migrations..."
-      rails db:migrate || { echo "Database migration failed"; exit 1; }
+      bundle exec rails db:migrate || { echo "Database migration failed"; exit 1; }
       echo "Starting Rails server..."
-      rails server -b 0.0.0.0 -p $PORT
+      bundle exec rails server -b 0.0.0.0 -p $PORT
