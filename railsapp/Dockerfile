@@ -51,7 +51,7 @@ COPY . .
 # Precompile bootsnap and assets
 RUN bundle exec bootsnap precompile app/ lib/
 RUN chmod +x ./bin/rails
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+RUN RAILS_ENV=production ./bin/rails assets:precompile
 
 # Optionally remove node_modules after asset precompilation if not needed at runtime
 RUN rm -rf node_modules
