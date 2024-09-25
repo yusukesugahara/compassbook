@@ -2,6 +2,7 @@ services:
   - type: web
     name: compassbook
     env: ruby
+    rootDirectory: railsapp
     buildCommand: |
       echo "Starting build process..."
       bundle install || { echo "Bundle install failed"; exit 1; }
