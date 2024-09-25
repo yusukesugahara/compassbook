@@ -99,4 +99,7 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.log_level = :debug  # 必要に応じてログレベルを設定
+  config.logger = ActiveSupport::Logger.new(STDOUT)  # 標準出力にログを出力
+
 end
