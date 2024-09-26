@@ -10,9 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_24_042301) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_26_023926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "business_model_canvases", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.text "key_partners"
+    t.text "key_activities"
+    t.text "key_resources"
+    t.text "value_propositions"
+    t.text "customer_relationships"
+    t.text "channels"
+    t.text "customer_segments"
+    t.text "cost_structure"
+    t.text "revenue_streams"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_business_model_canvases_on_project_id"
+  end
+
+  create_table "four_p_analyses", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.text "product"
+    t.text "price"
+    t.text "place"
+    t.text "promotion"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_four_p_analyses_on_project_id"
+  end
 
   create_table "pest_analyses", force: :cascade do |t|
     t.bigint "project_id", null: false
@@ -35,6 +64,28 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_042301) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "stp_analyses", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.text "segmentation"
+    t.text "targeting"
+    t.text "positioning"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_stp_analyses_on_project_id"
+  end
+
+  create_table "three_c_analyses", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.text "customer"
+    t.text "company"
+    t.text "competitor"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_three_c_analyses_on_project_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -48,6 +99,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_042301) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "business_model_canvases", "projects"
+  add_foreign_key "four_p_analyses", "projects"
   add_foreign_key "pest_analyses", "projects"
   add_foreign_key "projects", "users"
+  add_foreign_key "stp_analyses", "projects"
+  add_foreign_key "three_c_analyses", "projects"
 end

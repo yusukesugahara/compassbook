@@ -18,6 +18,10 @@ class ProjectsController < ApplicationController
 
   def show
     @pest_analyses = @project.pest_analyses
+    @three_c_analyses = @project.three_c_analyses
+    @stp_analyses = @project.stp_analyses
+    @four_p_analyses = @project.four_p_analyses
+    @business_model_canvases = @project.business_model_canvases
   end
 
   def edit

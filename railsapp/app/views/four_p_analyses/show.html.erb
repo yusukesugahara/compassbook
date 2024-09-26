@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="m-3">
+    <h1>4P分析詳細</h1>
+    <% if @four_p_analysis.present? %>
+			<div class="mb-3">
+				<label class="form-label">製品</label>
+				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.product %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">価格</label>
+				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.price %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">流通</label>
+				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.place %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">プロモーション</label>
+				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.promotion %></p>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">メモ</label>
+				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.memo %></p>
+			</div>
+
+			<div class="actions">
+				<%= link_to '編集', edit_project_four_p_analysis_path(@project, @four_p_analysis), class: 'btn btn-secondary' %>
+				<%= link_to '削除', project_four_p_analysis_path(@project, @four_p_analysis), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+				<%= link_to '一覧に戻る', project_path(@project), class: 'btn btn-primary' %>
+			</div>
+			<% else %>
+				<p>4P分析が見つかりません。</p>
+			<% end %>
+	</div>
+</div>
