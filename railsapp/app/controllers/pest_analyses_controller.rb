@@ -38,11 +38,12 @@ class PestAnalysesController < ApplicationController
 
   def destroy
     if @pest_analysis.destroy
-      redirect_to root_path, notice: 'PEST分析が削除されました。'
+      redirect_to project_path(@project), notice: 'PEST分析が削除されました。'
     else
-      redirect_to root_path, alert: 'PEST分析の削除に失敗しました。'
+      redirect_to project_path(@project), alert: 'PEST分析の削除に失敗しました。'
     end
   end
+  
   private
 
   def set_project
@@ -56,8 +57,6 @@ class PestAnalysesController < ApplicationController
     end
   end
 
-
-
   def pest_analysis_params
     params.require(:pest_analysis).permit(:political_factors, :economic_factors, :social_factors, :technological_factors, :memo)
   end
@@ -65,5 +64,4 @@ class PestAnalysesController < ApplicationController
   def handle_record_not_found
     redirect_to root_path, alert: 'PEST分析が見つかりませんでした。'
   end
-
 end

@@ -15,5 +15,9 @@ Rails.application.routes.draw do
   get 'userpage', to: 'userpages#show', as: 'userpage'
   resources :projects, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :pest_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :three_c_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :four_p_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :stp_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :business_model_canvases, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 end

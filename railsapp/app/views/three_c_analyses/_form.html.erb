@@ -1,0 +1,24 @@
+<%= form_with(model: [@project, @three_c_analysis], local: true) do |form| %>
+	<div class="mb-3">
+		<%= form.label :customer, '顧客' %>
+		<%= form.text_area :customer, class: 'form-control', rows: 3 %>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :company, '自社' %>
+		<%= form.text_area :company, class: 'form-control', rows: 3 %>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :competitor, '競合' %>
+		<%= form.text_area :competitor, class: 'form-control', rows: 3 %>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :memo, 'メモ' %>
+		<%= form.text_area :memo, class: 'form-control', rows: 5 %>
+	</div>
+
+	<%= form.submit '保存', class: 'btn btn-primary' %>
+	<%= link_to '一覧に戻る', project_path(@project), class: " btn btn-light" %>
+<% end %>

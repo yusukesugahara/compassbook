@@ -1,4 +1,4 @@
 class PestAnalysis < ApplicationRecord
-    belongs_to :project
-  end
+  belongs_to :project
+end
   

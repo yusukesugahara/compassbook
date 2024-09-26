@@ -1,0 +1,2 @@
+module FourPAnalysesHelper
+end
