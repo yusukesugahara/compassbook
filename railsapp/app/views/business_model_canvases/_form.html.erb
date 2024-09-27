@@ -1,48 +1,55 @@
 <%= form_with(model: [@project, @business_model_canvas], local: true) do |form| %>
-	<div class="mb-3">
-		<%= form.label :key_partners, 'パートナー' %>
-		<%= form.text_area :key_partners, class: 'form-control', rows: 3 %>
+	<div class="row row-cols-1 row-cols-md-5">
+		<div class="mb-3 col">
+			<%= form.label :key_partners, 'パートナー' %>
+			<%= form.text_area :key_partners, class: 'form-control', rows: 8 %>
+		</div>
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :key_activities, '主活動' %>
+				<%= form.text_area :key_activities, class: 'form-control', rows: 3 %>
+			</div>
+
+			<div class="mb-3">
+				<%= form.label :key_resources, 'リソース' %>
+				<%= form.text_area :key_resources, class: 'form-control', rows: 3 %>
+			</div>
+		</div>
+
+		<div class="mb-3 col">
+			<%= form.label :value_propositions, '価値提案' %>
+			<%= form.text_area :value_propositions, class: 'form-control', rows: 8 %>
+		</div>
+
+		<div class="col">
+			<div class="mb-3">
+				<%= form.label :customer_relationships, '顧客との関係' %>
+				<%= form.text_area :customer_relationships, class: 'form-control', rows: 3 %>
+			</div>
+
+			<div class="mb-3">
+				<%= form.label :channels, 'チャネル' %>
+				<%= form.text_area :channels, class: 'form-control', rows: 3 %>
+			</div>
+		</div>
+
+		<div class="mb-3 col">
+			<%= form.label :customer_segments, '顧客セグメント' %>
+			<%= form.text_area :customer_segments, class: 'form-control', rows: 8 %>
+		</div>
+	</div>
+	<div class="row row-cols-1 row-cols-md-2">
+		<div class="mb-3">
+			<%= form.label :cost_structure, 'コスト構造' %>
+			<%= form.text_area :cost_structure, class: 'form-control', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :revenue_streams, '収益の流れ' %>
+			<%= form.text_area :revenue_streams, class: 'form-control', rows: 3 %>
+		</div> 
 	</div>
 
-	<div class="mb-3">
-		<%= form.label :key_activities, '主活動' %>
-		<%= form.text_area :key_activities, class: 'form-control', rows: 3 %>
-	</div>
-
-	<div class="mb-3">
-		<%= form.label :key_resources, 'リソース' %>
-		<%= form.text_area :key_resources, class: 'form-control', rows: 3 %>
-	</div>
-
-	<div class="mb-3">
-		<%= form.label :value_propositions, '価値提案' %>
-		<%= form.text_area :value_propositions, class: 'form-control', rows: 3 %>
-	</div>
-
-	<div class="mb-3">
-		<%= form.label :customer_relationships, '顧客との関係' %>
-		<%= form.text_area :customer_relationships, class: 'form-control', rows: 3 %>
-	</div>
-
-	<div class="mb-3">
-		<%= form.label :channels, 'チャネル' %>
-		<%= form.text_area :channels, class: 'form-control', rows: 3 %>
-	</div>
-
-	<div class="mb-3">
-		<%= form.label :customer_segments, '顧客セグメント' %>
-		<%= form.text_area :customer_segments, class: 'form-control', rows: 3 %>
-	</div>
-
-	<div class="mb-3">
-		<%= form.label :cost_structure, 'コスト構造' %>
-		<%= form.text_area :cost_structure, class: 'form-control', rows: 3 %>
-	</div>
-
-	<div class="mb-3">
-		<%= form.label :revenue_streams, '収益の流れ' %>
-		<%= form.text_area :revenue_streams, class: 'form-control', rows: 3 %>
-	</div>  
 	<div class="mb-3">
 		<%= form.label :memo, 'メモ' %>
 		<%= form.text_area :memo, class: 'form-control', rows: 5 %>

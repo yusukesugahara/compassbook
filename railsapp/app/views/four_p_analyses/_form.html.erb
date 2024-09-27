@@ -1,22 +1,24 @@
 <%= form_with(model: [@project, @four_p_analysis], local: true) do |form| %>
-	<div class="mb-3">
-		<%= form.label :product, '製品' %>
-		<%= form.text_area :product, class: 'form-control', rows: 3 %>
-	</div>
+	<div class="row row-cols-1 row-cols-md-2">
+		<div class="mb-3">
+			<%= form.label :product, '製品' %>
+			<%= form.text_area :product, class: 'form-control col', rows: 3 %>
+		</div>
 
-	<div class="mb-3">
-		<%= form.label :price, '価格' %>
-		<%= form.text_area :price, class: 'form-control', rows: 3 %>
-	</div>
+		<div class="mb-3">
+			<%= form.label :price, '価格' %>
+			<%= form.text_area :price, class: 'form-control col', rows: 3 %>
+		</div>
 
-	<div class="mb-3">
-		<%= form.label :place, '流通' %>
-		<%= form.text_area :place, class: 'form-control', rows: 3 %>
-	</div>
+		<div class="mb-3">
+			<%= form.label :place, '流通' %>
+			<%= form.text_area :place, class: 'form-control col', rows: 3 %>
+		</div>
 
-	<div class="mb-3">
-		<%= form.label :promotion, 'プロモーション' %>
-		<%= form.text_area :promotion, class: 'form-control', rows: 3 %>
+		<div class="mb-3">
+			<%= form.label :promotion, 'プロモーション' %>
+			<%= form.text_area :promotion, class: 'form-control col', rows: 3 %>
+		</div>
 	</div>
 
 	<div class="mb-3">
