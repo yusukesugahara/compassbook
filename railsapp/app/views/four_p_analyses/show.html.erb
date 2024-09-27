@@ -2,26 +2,27 @@
   <div class="m-3">
     <h1>4P分析詳細</h1>
     <% if @four_p_analysis.present? %>
-			<div class="mb-3">
-				<label class="form-label">製品</label>
-				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.product %></p>
-			</div>
+			<div class="row row-cols-1 row-cols-md-2">
+				<div class="mb-3 col">
+					<label class="form-label">製品</label>
+					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.product %></p>
+				</div>
 
-			<div class="mb-3">
-				<label class="form-label">価格</label>
-				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.price %></p>
-			</div>
+				<div class="mb-3 col">
+					<label class="form-label">価格</label>
+					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.price %></p>
+				</div>
 
-			<div class="mb-3">
-				<label class="form-label">流通</label>
-				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.place %></p>
-			</div>
+				<div class="mb-3 col">
+					<label class="form-label">流通</label>
+					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.place %></p>
+				</div>
 
-			<div class="mb-3">
-				<label class="form-label">プロモーション</label>
-				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.promotion %></p>
+				<div class="mb-3 col">
+					<label class="form-label">プロモーション</label>
+					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.promotion %></p>
+				</div>
 			</div>
-
 			<div class="mb-3">
 				<label class="form-label">メモ</label>
 				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.memo %></p>
@@ -35,5 +36,6 @@
 			<% else %>
 				<p>4P分析が見つかりません。</p>
 			<% end %>
+		</div>
 	</div>
 </div>
