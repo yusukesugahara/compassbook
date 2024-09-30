@@ -16,6 +16,7 @@
 			<%= link_to '戻る', root_path, class: "btn btn-secondary" %>
 		</div>
 		<div class="m-3">
+		<strong>フレームワークの作成:</strong><br>
 			<%= link_to 'PEST分析', new_project_pest_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
 			<%= link_to '3C分析', new_project_three_c_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
 			<%= link_to 'STP分析', new_project_stp_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
@@ -24,6 +25,7 @@
 		</div>
 
 		<div class="m-3">
+			<strong>フレームワークの一覧:</strong><br>
 			<% if @pest_analyses.any? %>
 				<% @pest_analyses.each do |pest_analysis| %>
 						<%= link_to 'PEST', project_pest_analysis_path(@project, pest_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
