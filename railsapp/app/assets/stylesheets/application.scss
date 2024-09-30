@@ -1,0 +1,9 @@
+/*
+ *= require_tree .
+ *= require_self
+*/
+
+/* custom.cssを明示的に読み込む */
+@import "bootstrap";
+@import "layouts";
+
