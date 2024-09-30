@@ -6,43 +6,43 @@
         <!-- パートナー -->
         <div class="mb-3 col">
           <label class="form-label">パートナー</label>
-          <textarea class="form-control" readonly rows="9"><%= @business_model_canvas.key_partners %></textarea>
+          <div class="form-control" style="min-height:156px;"><%= simple_format(@business_model_canvas.key_partners) %></div>
         </div>
 
         <!-- 主活動とリソース -->
         <div class="col">
           <div class="mb-3">
             <label class="form-label">主活動</label>
-            <textarea class="form-control" readonly rows="3"><%= @business_model_canvas.key_activities %></textarea>
+            <div class="form-control" style="min-height:36px;"><%= simple_format(@business_model_canvas.key_activities) %></div>
           </div>
           <div class="mb-3">
             <label class="form-label">リソース</label>
-            <textarea class="form-control" readonly rows="3"><%= @business_model_canvas.key_resources %></textarea>
+            <div class="form-control" style="min-height:36px;"><%= simple_format(@business_model_canvas.key_resources) %></div>
           </div>
         </div>
 
         <!-- 価値提案 -->
         <div class="mb-3 col">
           <label class="form-label">価値提案</label>
-          <textarea class="form-control" readonly rows="9"><%= @business_model_canvas.value_propositions %></textarea>
+          <div class="form-control" style="min-height:156px;"><%= simple_format(@business_model_canvas.value_propositions) %></div>
         </div>
 
         <!-- 顧客との関係とチャネル -->
         <div class="col">
           <div class="mb-3">
             <label class="form-label">顧客との関係</label>
-            <textarea class="form-control" readonly rows="3"><%= @business_model_canvas.customer_relationships %></textarea>
+            <div class="form-control" style="min-height:36px;"><%= simple_format(@business_model_canvas.customer_relationships) %></div>
           </div>
           <div class="mb-3">
             <label class="form-label">チャネル</label>
-            <textarea class="form-control" readonly rows="3"><%= @business_model_canvas.channels %></textarea>
+            <div class="form-control" style="min-height:36px;"><%= simple_format(@business_model_canvas.channels) %></div>
           </div>
         </div>
 
         <!-- 顧客セグメント -->
         <div class="mb-3 col">
           <label class="form-label">顧客セグメント</label>
-          <textarea class="form-control" readonly rows="9"><%= @business_model_canvas.customer_segments %></textarea>
+          <div class="form-control" style="min-height:156px;"><%= simple_format(@business_model_canvas.customer_segments) %></div>
         </div>
       </div>
 
@@ -50,20 +50,19 @@
       <div class="row row-cols-1 row-cols-md-2">
         <div class="mb-3 col">
           <label class="form-label">コスト構造</label>
-          <textarea class="form-control" readonly rows="4"><%= @business_model_canvas.cost_structure %></textarea>
+          <div class="form-control" style="min-height:36px;"><%= simple_format(@business_model_canvas.cost_structure) %></div>
         </div>
         <div class="mb-3 col">
           <label class="form-label">収益の流れ</label>
-          <textarea class="form-control" readonly rows="4"><%= @business_model_canvas.revenue_streams %></textarea>
+          <div class="form-control" style="min-height:36px;"><%= simple_format(@business_model_canvas.revenue_streams) %></div>
         </div>
       </div>
 
       <!-- メモ -->
       <div class="mb-3">
         <label class="form-label">メモ</label>
-        <textarea class="form-control" readonly rows="3"><%= @business_model_canvas.memo %></textarea>
+        <div class="form-control" style="min-height:36px;"><%= simple_format(@business_model_canvas.memo) %></div>
       </div>
-
       <!-- アクションボタン -->
       <div class="actions">
         <%= link_to '編集', edit_project_business_model_canvas_path(@project, @business_model_canvas), class: 'btn btn-secondary' %>
