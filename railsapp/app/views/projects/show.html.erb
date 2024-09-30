@@ -1,54 +1,81 @@
 
 <div class="container mt-5">
-	<div class="m-3">
-		<h1>プロジェクト詳細</h1>
-		<p>
-			<strong>プロジェクト名:</strong>
-			<%= @project.title %>
-		</p>
+	<div class="" style="margin-left:24px;">
+		<div class="m-3" style="margin-left:24px;">
+			<h1>プロジェクト詳細</h1>
+			<p>
+				<strong>プロジェクト名:</strong>
+				<%= @project.title %>
+			</p>
+			<p>
+				<strong>説明:</strong>
+				<%= @project.description %>
+			</p>
+			<%= link_to '編集', edit_project_path(@project), class: "btn btn-primary" %>
 
-		<p>
-			<strong>説明:</strong>
-			<%= @project.description %>
-		</p>
+			<%= link_to '戻る', root_path, class: "btn btn-secondary" %>
+		</div>
+		<div class="m-3">
+			<%= link_to 'PEST分析', new_project_pest_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
+			<%= link_to '3C分析', new_project_three_c_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
+			<%= link_to 'STP分析', new_project_stp_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
+			<%= link_to '4P分析', new_project_four_p_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
+			<%= link_to 'ビジネスモデルキャンバス', new_project_business_model_canvas_path(@project), class: 'btn btn-outline-primary mb-1' %>
+		</div>
 
-		<%= link_to '編集', edit_project_path(@project), class: "btn btn-primary" %>
-		<%= link_to '削除', project_path(@project), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
-		<%= link_to '戻る', root_path, class: "btn btn-secondary" %>
+		<div class="m-3">
+			<% if @pest_analyses.any? %>
+				<% @pest_analyses.each do |pest_analysis| %>
+						<%= link_to 'PEST', project_pest_analysis_path(@project, pest_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
+			<% if @three_c_analyses.any? %>
+				<% @three_c_analyses.each do |three_c_analysis| %>
+						<%= link_to '3C', project_three_c_analysis_path(@project, three_c_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
+			<% if @stp_analyses.any? %>
+				<% @stp_analyses.each do |stp_analysis| %>
+						<%= link_to 'STP', project_stp_analysis_path(@project, stp_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
+			<% if @four_p_analyses.any? %>
+				<% @four_p_analyses.each do |four_p_analysis| %>
+						<%= link_to '4P', project_four_p_analysis_path(@project, four_p_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3'  %>
+				<% end %>
+			<% end %>
+			<% if @business_model_canvases.any? %>
+				<% @business_model_canvases.each do |business_model_canvas| %>
+						<%= link_to 'ビジネスモデルキャンバス', project_business_model_canvas_path(@project, business_model_canvas), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
-	<div class="m-3">
-		<%= link_to 'PEST分析', new_project_pest_analysis_path(@project), class: 'btn btn-primary mb-1' %>
-		<%= link_to '3C分析', new_project_three_c_analysis_path(@project), class: 'btn btn-primary mb-1' %>
-		<%= link_to 'STP分析', new_project_stp_analysis_path(@project), class: 'btn btn-primary mb-1' %>
-		<%= link_to '4P分析', new_project_four_p_analysis_path(@project), class: 'btn btn-primary mb-1' %>
-		<%= link_to 'ビジネスモデルキャンバス', new_project_business_model_canvas_path(@project), class: 'btn btn-primary mb-1' %>
-	</div>
-
 	<div class="m-3">
 		<% if @pest_analyses.any? %>
 			<% @pest_analyses.each do |pest_analysis| %>
-					<%= link_to 'PEST', project_pest_analysis_path(@project, pest_analysis), class: 'btn btn-primary mb-1' %>
+				<%= render 'components/pest_analyses_display', pest_analysis: pest_analysis %>
 			<% end %>
 		<% end %>
 		<% if @three_c_analyses.any? %>
 			<% @three_c_analyses.each do |three_c_analysis| %>
-					<%= link_to '3C', project_three_c_analysis_path(@project, three_c_analysis), class: 'btn btn-primary mb-1' %>
+				<%= render 'components/three_c_analyses_display', three_c_analysis: three_c_analysis%>
 			<% end %>
 		<% end %>
 		<% if @stp_analyses.any? %>
 			<% @stp_analyses.each do |stp_analysis| %>
-					<%= link_to 'STP', project_stp_analysis_path(@project, stp_analysis), class: 'btn btn-primary mb-1' %>
+				<%= render 'components/stp_analyses_display', stp_analysis: stp_analysis %>
 			<% end %>
 		<% end %>
 		<% if @four_p_analyses.any? %>
 			<% @four_p_analyses.each do |four_p_analysis| %>
-					<%= link_to '4P', project_four_p_analysis_path(@project, four_p_analysis), class: 'btn btn-primary mb-1'  %>
+				<%= render 'components/four_p_analyses_display', four_p_analysis: four_p_analysis %>
 			<% end %>
 		<% end %>
 		<% if @business_model_canvases.any? %>
 			<% @business_model_canvases.each do |business_model_canvas| %>
-					<%= link_to 'ビジネスモデルキャンバス', project_business_model_canvas_path(@project, business_model_canvas), class: 'btn btn-primary mb-1' %>
+				<%= render 'components/business_model_canvases_display', business_model_canvas: business_model_canvas %>
 			<% end %>
 		<% end %>
-	</div>
+  </div>
 </div>

@@ -12,6 +12,9 @@
     
     <div class="mb-3">
       <%= form.submit '保存', class: 'btn btn-primary' %>
+      <%= link_to '削除', project_path(@project), data: { turbo_method: :delete, turbo_confirm: '削除するとプロジェクト配下のフレームワークも削除されます。
+本当に削除しますか？' }, class: "btn btn-danger" %>
+      <%= link_to '一覧に戻る', project_path(@project), class: 'btn btn-secondary' %>
     </div>
   </div>
 <% end %>
