@@ -5,27 +5,27 @@
 			<div class="row row-cols-1 row-cols-md-2">
 				<div class="mb-3 col">
 					<label class="form-label">政治的要因</label>
-					<p class="form-control" style="min-height:36px;"><%= pest_analysis.political_factors %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(pest_analysis.political_factors) %></div>
 				</div>
 
 				<div class="mb-3 col">
 					<label class="form-label">経済的要因</label>
-					<p class="form-control" style="min-height:36px;"><%= pest_analysis.economic_factors %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(pest_analysis.economic_factors) %></div>
 				</div>
 
 				<div class="mb-3 col">
 					<label class="form-label">社会的要因</label>
-					<p class="form-control" style="min-height:36px;"><%= pest_analysis.social_factors %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(pest_analysis.social_factors) %></div>
 				</div>
 
 				<div class="mb-3 col">
 					<label class="form-label">技術的要因</label>
-					<p class="form-control" style="min-height:36px;"><%= pest_analysis.technological_factors %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(pest_analysis.technological_factors) %></div>
 				</div>
 			</div>
 			<div class="mb-3">
 				<label class="form-label">メモ</label>
-				<p class="form-control" style="min-height:36px;"><%= pest_analysis.memo %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(pest_analysis.memo) %></div>
 			</div>
 
 			<div class="actions">

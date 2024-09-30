@@ -5,27 +5,27 @@
 			<div class="row row-cols-1 row-cols-md-2">
 				<div class="mb-3 col">
 					<label class="form-label">製品</label>
-					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.product %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@four_p_analysis.product) %></div>
 				</div>
 
 				<div class="mb-3 col">
 					<label class="form-label">価格</label>
-					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.price %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@four_p_analysis.price) %></div>
 				</div>
 
 				<div class="mb-3 col">
 					<label class="form-label">流通</label>
-					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.place %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@four_p_analysis.place) %></div>
 				</div>
 
 				<div class="mb-3 col">
 					<label class="form-label">プロモーション</label>
-					<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.promotion %></p>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@four_p_analysis.promotion) %></div>
 				</div>
 			</div>
 			<div class="mb-3">
 				<label class="form-label">メモ</label>
-				<p class="form-control" style="min-height:36px;"><%= @four_p_analysis.memo %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(@four_p_analysis.memo) %></div>
 			</div>
 
 			<div class="actions">

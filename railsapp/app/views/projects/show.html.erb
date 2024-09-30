@@ -7,10 +7,10 @@
 				<strong>プロジェクト名:</strong>
 				<%= @project.title %>
 			</p>
-			<p>
+			<div>
 				<strong>説明:</strong>
-				<%= @project.description %>
-			</p>
+				<%= simple_format(@project.description) %>
+			</div>
 			<%= link_to '編集', edit_project_path(@project), class: "btn btn-primary" %>
 
 			<%= link_to '戻る', root_path, class: "btn btn-secondary" %>

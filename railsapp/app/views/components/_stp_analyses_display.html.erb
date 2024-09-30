@@ -4,22 +4,22 @@
     <% if stp_analysis.present? %>
 			<div class="mb-3">
 				<label class="form-label">セグメンテーション</label>
-				<p class="form-control" style="min-height:36px;"><%= stp_analysis.segmentation%></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(stp_analysis.segmentation) %></div>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label">ターゲティング</label>
-				<p class="form-control" style="min-height:36px;"><%= stp_analysis.targeting %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(stp_analysis.targeting) %></div>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label">ポジショニング</label>
-				<p class="form-control" style="min-height:36px;"><%= stp_analysis.positioning %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(stp_analysis.positioning) %></div>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label">メモ</label>
-				<p class="form-control" style="min-height:36px;"><%= stp_analysis.memo %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(stp_analysis.memo) %></div>
 			</div>
 
 			<div class="actions">

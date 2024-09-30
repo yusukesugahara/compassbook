@@ -4,22 +4,22 @@
     <% if @three_c_analysis.present? %>
 			<div class="mb-3">
 				<label class="form-label">顧客</label>
-				<p class="form-control" style="min-height:36px;"><%= @three_c_analysis.customer %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(@three_c_analysis.customer) %></div>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label">自社</label>
-				<p class="form-control" style="min-height:36px;"><%= @three_c_analysis.company %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(@three_c_analysis.company) %></div>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label">競合</label>
-				<p class="form-control" style="min-height:36px;"><%= @three_c_analysis.competitor %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(@three_c_analysis.competitor) %></div>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label">メモ</label>
-				<p class="form-control" style="min-height:36px;"><%= @three_c_analysis.memo %></p>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(@three_c_analysis.memo) %></div>
 			</div>
 
 			<div class="actions">
