@@ -1,6 +1,53 @@
 <div class="container mt-5">
   <div class="m-3">
-    <h1>Home#index</h1>
-    <p>Find me in app/views/home/index.html.erb</p>
+  <div class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">経営・起業のフレームワーク分析を簡単に</h1>
+      <p class="lead">CompassBookは、ビジネスモデルキャンバスやPEST分析など、主要な経営フレームワークを簡単に作成・管理できるツールです。</p>
+      <a href="<%= new_user_session_path %>" class="btn btn-light btn-lg">今すぐログイン</a>
+      <a href="<%= new_user_registration_path %>" class="btn btn-outline-light btn-lg">サインアップ</a>
+    </div>
+  </div>
+  
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">主な機能</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">ビジネスモデルキャンバス</h5>
+              <p class="card-text">ビジネスモデルを視覚的に整理し、効率的に分析・改善できます。</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">PEST分析</h5>
+              <p class="card-text">外部環境を分析し、ビジネス戦略を立てるための有用な洞察を得られます。</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">3C分析</h5>
+              <p class="card-text">顧客、競合、自社の視点から市場を多角的に分析します。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-light py-5">
+    <div class="container text-center">
+      <h2>今すぐ始めましょう</h2>
+      <p>無料でアカウントを作成し、ビジネス分析を効率化しましょう。</p>
+      <a href="<%= new_user_registration_path %>" class="btn btn-primary btn-lg">サインアップ</a>
+      <a href="<%= new_user_session_path %>" class="btn btn-outline-primary btn-lg">ログイン</a>
+    </div>
+  </section>
   </div>
 </div>
