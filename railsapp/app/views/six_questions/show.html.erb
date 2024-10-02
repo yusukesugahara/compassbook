@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="m-3">
+    <h1>6つの質問詳細</h1>
+    <% if @six_question.present? %>
+			<div class="row row-cols-1 row-cols-md-2">
+				<div class="mb-3 col">
+					<label class="form-label">誰の</label>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@six_question.who) %></div>
+				</div>
+
+				<div class="mb-3 col">
+					<label class="form-label">どんな課題を</label>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@six_question.problem) %></div>
+				</div>
+
+				<div class="mb-3 col">
+					<label class="form-label">どうやって解決するのか</label>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@six_question.solution) %></div>
+				</div>
+
+				<div class="mb-3 col">
+					<label class="form-label">既存の代替品は何か</label>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@six_question.existing_alternatives) %></div>
+				</div>
+
+				<div class="mb-3 col">
+					<label class="form-label">市場規模はどれくらいか</label>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@six_question.market_size) %></div>
+				</div>
+
+				<div class="mb-3 col">
+					<label class="form-label">あなたがそれをやる意味は何か</label>
+					<div class="form-control" style="min-height:36px;"><%= simple_format(@six_question.purpose) %></div>
+				</div>
+
+			</div>
+			<div class="mb-3">
+				<label class="form-label">メモ</label>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(@six_question.memo) %></div>
+			</div>
+
+			<div class="actions">
+				<%= link_to '編集', edit_project_six_question_path(@project, @six_question), class: 'btn btn-secondary' %>
+				<%= link_to '削除', project_six_question_path(@project, @six_question), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+				<%= link_to '一覧に戻る', project_path(@project), class: 'btn btn-primary' %>
+			</div>
+			<% else %>
+				<p>6つの質問が見つかりません。</p>
+			<% end %>
+		</div>
+	</div>
+</div>

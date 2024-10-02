@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="mt-3">
+	<h2>SWOT分析</h2>
+	<% if swot_analysis.present? %>
+		<div class="row row-cols-1 row-cols-md-2">
+			<div class="mb-3 col">
+				<label class="form-label">強み</label>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(swot_analysis.strengths) %></div>
+			</div>
+
+			<div class="mb-3 col">
+				<label class="form-label">弱み</label>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(swot_analysis.weaknesses) %></div>
+			</div>
+
+			<div class="mb-3 col">
+				<label class="form-label">機会</label>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(swot_analysis.opportunities) %></div>
+			</div>
+
+			<div class="mb-3 col">
+				<label class="form-label">脅威</label>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(swot_analysis.threats) %></div>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label class="form-label">メモ</label>
+			<div class="form-control" style="min-height:36px;"><%= simple_format(swot_analysis.memo) %></div>
+		</div>
+
+			<div class="actions">
+				<%= link_to '編集', edit_project_swot_analysis_path(@project, swot_analysis), class: 'btn btn-outline-secondary' %>
+				<%= link_to '削除', project_swot_analysis_path(@project, swot_analysis), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger" %>
+			</div>
+			<% else %>
+				<p>SWOT分析が見つかりません。</p>
+			<% end %>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="mt-3">
+    <h2>メモ</h2>
+    <% if memo.present? %>
+			<div class="mb-3">
+				<label class="form-label">メモ</label>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(memo.memo) %></div>
+			</div>
+
+			<div class="actions">
+				<%= link_to '編集', edit_project_memo_path(@project, memo), class: 'btn btn-outline-secondary' %>
+				<%= link_to '削除', project_memo_path(@project, memo), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger" %>
+			</div>
+			<% else %>
+				<p>メモが見つかりません。</p>
+			<% end %>
+	</div>
+</div>

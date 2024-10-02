@@ -8,7 +8,7 @@
 			</div>
 
 			<div class="actions">
-				<%= link_to '編集', edit_project_pest_memo_path(@project, @memo), class: 'btn btn-secondary' %>
+				<%= link_to '編集', edit_project_memo_path(@project, @memo), class: 'btn btn-secondary' %>
 				<%= link_to '削除', project_memo_path(@project, @memo), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
 				<%= link_to '一覧に戻る', project_path(@project), class: 'btn btn-primary' %>
 			</div>

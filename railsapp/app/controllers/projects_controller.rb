@@ -22,6 +22,10 @@ class ProjectsController < ApplicationController
     @stp_analyses = @project.stp_analyses
     @four_p_analyses = @project.four_p_analyses
     @business_model_canvases = @project.business_model_canvases
+    @swot_analyses = @project.swot_analyses
+    @five_f_analyses = @project.five_f_analyses
+    @six_questions = @project.six_questions
+    @memos = @project.memos
   end
 
   def edit

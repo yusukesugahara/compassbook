@@ -1,0 +1,32 @@
+<%= form_with(model: [@project, @swot_analysis], local: true) do |form| %>
+	<div class="row row-cols-1 row-cols-md-2">
+		<div class="mb-3">
+			<%= form.label :strengths, '強み' %>
+			<%= form.text_area :strengths, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :weaknesses, '弱み' %>
+			<%= form.text_area :weaknesses, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :opportunities, '機会' %>
+			<%= form.text_area :opportunities, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :threats, '脅威' %>
+			<%= form.text_area :threats, class: 'form-control col', rows: 3 %>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :memo, 'メモ' %>
+		<%= form.text_area :memo, class: 'form-control', rows: 5 %>
+	</div>
+
+	<%= form.submit '保存', class: 'btn btn-primary' %>
+	<%= link_to '一覧に戻る', project_path(@project), class: " btn btn-light" %>
+<% end %>
+

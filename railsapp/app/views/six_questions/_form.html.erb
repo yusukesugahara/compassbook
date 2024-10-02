@@ -1,0 +1,42 @@
+<%= form_with(model: [@project, @six_question], local: true) do |form| %>
+	<div class="row row-cols-1 row-cols-md-2">
+		<div class="mb-3">
+			<%= form.label :who, '誰の' %>
+			<%= form.text_area :who, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :problem, 'どんな課題を' %>
+			<%= form.text_area :problem, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :solution, 'どうやって解決するのか' %>
+			<%= form.text_area :solution, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :existing_alternatives, '既存の代替品は何か' %>
+			<%= form.text_area :existing_alternatives, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :market_size, '市場規模はどれくらいか' %>
+			<%= form.text_area :market_size, class: 'form-control col', rows: 3 %>
+		</div>
+
+		<div class="mb-3">
+			<%= form.label :purpose, 'あなたがそれをやる意味は何か' %>
+			<%= form.text_area :purpose, class: 'form-control col', rows: 3 %>
+		</div>
+
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :memo, 'メモ' %>
+		<%= form.text_area :memo, class: 'form-control', rows: 5 %>
+	</div>
+
+	<%= form.submit '保存', class: 'btn btn-primary' %>
+	<%= link_to '一覧に戻る', project_path(@project), class: " btn btn-light" %>
+<% end %>
