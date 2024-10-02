@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <div class="m-3">
+    <h1>5F分析詳細</h1>
+    <% if @five_f_analysis.present? %>
+			<div class="row row-cols-1 row-cols-md-3">
+				<div class="mb-3 col">
+					<div class="" style="margin-top:100px;">
+						<label class="form-label">売り手の交渉力</label>
+						<div class="form-control" style="min-height:36px;"><%= simple_format(@five_f_analysis.bargaining_power_of_suppliers) %></div>
+					</div>
+				</div>
+
+
+				<div class="mb-3 col ">
+					<div class="mb-3">
+						<label class="form-label">新規参入の脅威</label>
+						<div class="form-control" style="min-height:36px;"><%= simple_format(@five_f_analysis.threat_of_new_entrants) %></div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">業界内の戦い</label>
+						<div class="form-control" style="min-height:36px;"><%= simple_format(@five_f_analysis.competitive_rivalry) %></div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">代替品の脅威</label>
+						<div class="form-control" style="min-height:36px;"><%= simple_format(@five_f_analysis.threat_of_substitutes) %></div>
+					</div>
+
+				</div>
+
+				<div class="mb-3 col">
+					<div class="" style="margin-top:100px;">
+						<label class="form-label">買い手の交渉力</label>
+						<div class="form-control" style="min-height:36px;"><%= simple_format(@five_f_analysis.bargaining_power_of_buyers) %></div>
+					</div>
+				</div>
+			</div>
+
+			</div>
+			<div class="mb-3">
+				<label class="form-label">メモ</label>
+				<div class="form-control" style="min-height:36px;"><%= simple_format(@five_f_analysis.memo) %></div>
+			</div>
+
+			<div class="actions">
+				<%= link_to '編集', edit_project_four_p_analysis_path(@project, @five_f_analysis), class: 'btn btn-secondary' %>
+				<%= link_to '削除', project_four_p_analysis_path(@project, @five_f_analysis), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+				<%= link_to '一覧に戻る', project_path(@project), class: 'btn btn-primary' %>
+			</div>
+			<% else %>
+				<p>5F分析が見つかりません。</p>
+			<% end %>
+		</div>
+	</div>
+</div>

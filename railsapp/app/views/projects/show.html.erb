@@ -17,18 +17,32 @@
 		</div>
 		<div class="mt-3">
   		<strong>フレームワークの作成:</strong><br>
+			<%= link_to 'SWOT分析', new_project_swot_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
 			<%= link_to 'PEST分析', new_project_pest_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
+			<%= link_to '5F分析', new_project_five_f_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
 			<%= link_to '3C分析', new_project_three_c_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
 			<%= link_to 'STP分析', new_project_stp_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
 			<%= link_to '4P分析', new_project_four_p_analysis_path(@project), class: 'btn btn-outline-primary mb-1' %>
 			<%= link_to 'ビジネスモデルキャンバス', new_project_business_model_canvas_path(@project), class: 'btn btn-outline-primary mb-1' %>
-		</div>
+			<%= link_to '6つの質問', new_project_six_question_path(@project), class: 'btn btn-outline-primary mb-1' %>
+			<%= link_to 'メモ', new_project_memo_path(@project), class: 'btn btn-outline-primary mb-1' %>
+			</div>
 
 		<div class="mt-3">
 			<strong>フレームワークの一覧:</strong><br>
+			<% if @swot_analyses.any? %>
+				<% @swot_analyses.each do |swot_analysis| %>
+						<%= link_to 'SWOT', project_swot_analysis_path(@project, swot_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
 			<% if @pest_analyses.any? %>
 				<% @pest_analyses.each do |pest_analysis| %>
 						<%= link_to 'PEST', project_pest_analysis_path(@project, pest_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
+			<% if @five_f_analyses.any? %>
+				<% @five_f_analyses.each do |five_f_analysis| %>
+						<%= link_to '5F', project_five_f_analysis_path(@project, five_f_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
 				<% end %>
 			<% end %>
 			<% if @three_c_analyses.any? %>
@@ -46,17 +60,40 @@
 						<%= link_to '4P', project_four_p_analysis_path(@project, four_p_analysis), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3'  %>
 				<% end %>
 			<% end %>
+
+
 			<% if @business_model_canvases.any? %>
 				<% @business_model_canvases.each do |business_model_canvas| %>
 						<%= link_to 'ビジネスモデルキャンバス', project_business_model_canvas_path(@project, business_model_canvas), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
 				<% end %>
 			<% end %>
+			<% if @six_questions.any? %>
+				<% @six_questions.each do |six_question| %>
+						<%= link_to '6つの質問', project_six_question_path(@project, six_question), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
+			<% if @memos.any? %>
+				<% @memos.each do |memo| %>
+						<%= link_to 'メモ', project_memo_path(@project, memo), class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3' %>
+				<% end %>
+			<% end %>
+
 		</div>
 	</div>
 	<div class="mt-3">
+		<% if @swot_analyses.any? %>
+			<% @swot_analyses.each do |swot_analysis| %>
+				<%= render 'components/swot_analyses_display', swot_analysis: swot_analysis %>
+			<% end %>
+		<% end %>
 		<% if @pest_analyses.any? %>
 			<% @pest_analyses.each do |pest_analysis| %>
 				<%= render 'components/pest_analyses_display', pest_analysis: pest_analysis %>
+			<% end %>
+		<% end %>
+		<% if @five_f_analyses.any? %>
+			<% @five_f_analyses.each do |five_f_analysis| %>
+				<%= render 'components/five_f_analyses_display', five_f_analysis: five_f_analysis %>
 			<% end %>
 		<% end %>
 		<% if @three_c_analyses.any? %>
@@ -79,5 +116,15 @@
 				<%= render 'components/business_model_canvases_display', business_model_canvas: business_model_canvas %>
 			<% end %>
 		<% end %>
+		<% if @six_questions.any? %>
+			<% @six_questions.each do |six_question| %>
+				<%= render 'components/six_questions_display', six_question: six_question %>
+			<% end %>
+		<% end %>
+		<% if @memos.any? %>
+			<% @memos.each do |memo| %>
+				<%= render 'components/memos_display', memo: memo %>
+			<% end %>
+		<% end %>		
   </div>
 </div>

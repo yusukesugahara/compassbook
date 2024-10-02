@@ -1,0 +1,2 @@
+module SixQuestionsHelper
+end

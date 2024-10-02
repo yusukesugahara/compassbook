@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     resources :four_p_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :stp_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :business_model_canvases, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :swot_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :six_questions, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :five_f_analyses, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :memos, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 end

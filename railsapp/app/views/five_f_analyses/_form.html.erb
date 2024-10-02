@@ -1,0 +1,40 @@
+<%= form_with(model: [@project, @five_f_analysis], local: true) do |form| %>
+	<div class="row row-cols-1 row-cols-md-3">
+		<div class="mb-3 col">
+			<div class="" style="margin-top:125px;">
+				<%= form.label :bargaining_power_of_suppliers, '売り手の交渉力' %>
+				<%= form.text_area :bargaining_power_of_suppliers, class: 'form-control col', rows: 3 %>
+			</div>
+		</div>
+
+		<div class="mb-3 col ">
+			<div class="mb-3">
+				<%= form.label :threat_of_new_entrants, '新規参入の脅威' %>
+				<%= form.text_area :threat_of_new_entrants, class: 'form-control col', rows: 3 %>
+			</div>
+			<div class="mb-3">
+				<%= form.label :competitive_rivalry, '業界内の戦い' %>
+				<%= form.text_area :competitive_rivalry, class: 'form-control col', rows: 3 %>
+			</div>
+			<div class="mb-3">
+				<%= form.label :threat_of_substitutes, '代替品の脅威' %>
+				<%= form.text_area :threat_of_substitutes, class: 'form-control col', rows: 3 %>
+			</div>
+		</div>
+
+		<div class="mb-3 col">
+			<div class="" style="margin-top:125px;">
+				<%= form.label :bargaining_power_of_buyers, '買い手の交渉力' %>
+				<%= form.text_area :bargaining_power_of_buyers, class: 'form-control col', rows: 3 %>
+			</div>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<%= form.label :memo, 'メモ' %>
+		<%= form.text_area :memo, class: 'form-control', rows: 5 %>
+	</div>
+
+	<%= form.submit '保存', class: 'btn btn-primary' %>
+	<%= link_to '一覧に戻る', project_path(@project), class: " btn btn-light" %>
+<% end %>
