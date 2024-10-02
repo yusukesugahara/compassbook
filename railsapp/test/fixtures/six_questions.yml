@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  who: MyString
+  problem: MyText
+  solution: MyText
+  existing_alternatives: MyText
+  market_size: MyString
+  purpose: MyText
+  memo: MyText
+
+two:
+  project: two
+  who: MyString
+  problem: MyText
+  solution: MyText
+  existing_alternatives: MyText
+  market_size: MyString
+  purpose: MyText
+  memo: MyText
