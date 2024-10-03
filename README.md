@@ -5,6 +5,10 @@ URL:https://compassbook.onrender.com/
 ID:test@test.co.jp  
 Pass:111111
 
+## アプリ制作の詳細  
+下記のQiitaにて説明しています。
+https://qiita.com/sghr2020/items/e13329fd411af28deb82  
+
 ## 使用技術  
 Ruby on Rails 7.2.1  
 Ruby 3.2.0  
