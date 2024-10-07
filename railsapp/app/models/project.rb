@@ -10,6 +10,6 @@ class Project < ApplicationRecord
   has_many :six_questions, dependent: :destroy
   has_many :memos, dependent: :destroy
 
-  
+  validates :title, presence: true
 end
   
